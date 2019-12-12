@@ -1,5 +1,5 @@
-# Kafka-Producer
-The Demo of Java Kafka Producer
+# Kafka-Java-Sample
+The Demo of Java Kafka Producer, Consumer, Streams, Connector.
 
 To prepare the environment, please refer to:
 
