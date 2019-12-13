@@ -6,11 +6,11 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.KTable;
 
 public class KafkaStreamsSample extends Thread {
 
+	private KafkaStreams streams = null;
+	
 	@Override
 	public void run() {
 		// change it to your topic name
@@ -26,12 +26,14 @@ public class KafkaStreamsSample extends Thread {
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
  
         StreamsBuilder builder = new StreamsBuilder();
-//        KStream<String, String> textLines = 
         builder.stream(topicName).to(targetTopic);
  
-        KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams = new KafkaStreams(builder.build(), props);
         streams.cleanUp();
         streams.start();
 	}
 	
+	public void finish() {
+		streams.close();
+	}
 }

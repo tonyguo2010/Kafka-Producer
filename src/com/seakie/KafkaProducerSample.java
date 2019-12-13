@@ -22,8 +22,13 @@ public class KafkaProducerSample {
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 		Producer<String, String> producer = new KafkaProducer<String, String>(props);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			producer.send(new ProducerRecord<String, String>(topicName, "No " + i, "" + i));
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
 		System.out.println("Message sent");

@@ -28,8 +28,8 @@ public class KafkaConsumerSample extends Thread {
 
 		consumer.subscribe(Arrays.asList(topicName));
 
-		// exit the thread in 30 seconds
-		for (int i = 0; i < 30; i++) {
+		// exit the thread in 5 seconds
+		for (int i = 0; i < 5; i++) {
 			try {
 				Thread.sleep(1000);
 
@@ -44,6 +44,8 @@ public class KafkaConsumerSample extends Thread {
 				e.printStackTrace();
 			}
 		}
+		
+		consumer.close();
 	}
 
 }

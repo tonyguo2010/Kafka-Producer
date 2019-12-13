@@ -10,5 +10,7 @@ public class Main {
 		consumerThread.start();
 		
 		KafkaProducerSample.work();
+		
+		streamsThread.finish();
 	}
 }
