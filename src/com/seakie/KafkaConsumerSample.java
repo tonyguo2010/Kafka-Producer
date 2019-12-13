@@ -23,7 +23,7 @@ public class KafkaConsumerSample extends Thread {
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, remoteHost);
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-		props.put(ConsumerConfig.GROUP_ID_CONFIG, "abcd");
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id_not_exist");
 		Consumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 
 		consumer.subscribe(Arrays.asList(topicName));
